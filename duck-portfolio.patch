@@ -1,0 +1,156 @@
+diff --git a/frontend/index.html b/frontend/index.html
+index e5a7228..11b065e 100644
+--- a/frontend/index.html
++++ b/frontend/index.html
+@@ -5,10 +5,10 @@
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="DuckDuckGov: welke ondernemingen zijn echt actief in de gemeente, en waarop baseren we dat?" />
+   <meta name="theme-color" content="#07110f" />
+-  <link rel="icon" type="image/png" href="/duckduckgov-logo.png" />
+-  <link rel="apple-touch-icon" href="/duckduckgov-logo.png" />
+-  <link rel="preload" as="image" href="/duckduckgov-logo.png" />
+-  <title>DuckDuckGov</title>
++  <link rel="icon" type="image/png" href="./duckduckgov-logo.png" />
++  <link rel="apple-touch-icon" href="./duckduckgov-logo.png" />
++  <link rel="preload" as="image" href="./duckduckgov-logo.png" />
++  <title>DuckDuckGov · Synthetic portfolio demo</title>
+   <!-- Splash styles live here so the splash looks the same before and after the app bundle loads. -->
+   <style>
+     html, body { margin: 0; height: 100%; background: #07110f; }
+@@ -42,7 +42,7 @@
+ <body>
+   <div id="root">
+     <div class="splash" role="status" aria-live="polite">
+-      <div class="splash-card"><img src="/duckduckgov-logo.png" alt="DuckDuckGov" width="300" height="300" /></div>
++      <div class="splash-card"><img src="./duckduckgov-logo.png" alt="DuckDuckGov" width="300" height="300" /></div>
+       <p class="splash-tagline">Welke ondernemingen zijn echt actief, en waarop baseren we dat?</p>
+       <div class="splash-progress" aria-hidden="true"><i></i></div>
+       <small class="splash-status">Laden…</small>
+diff --git a/frontend/src/App.tsx b/frontend/src/App.tsx
+index dabd5ec..d849ed2 100644
+--- a/frontend/src/App.tsx
++++ b/frontend/src/App.tsx
+@@ -41,7 +41,7 @@ const SKIP_SPLASH = new URLSearchParams(window.location.search).has("nosplash");
+ function SplashScreen({ leaving, status }: { leaving: boolean; status: string }) {
+   return (
+     <div className={`splash${leaving ? " leaving" : ""}`} role="status" aria-live="polite" aria-busy={!leaving}>
+-      <div className="splash-card"><img src="/duckduckgov-logo.png" alt="DuckDuckGov" width={300} height={300} /></div>
++      <div className="splash-card"><img src="./duckduckgov-logo.png" alt="DuckDuckGov" width={300} height={300} /></div>
+       <p className="splash-tagline">Welke ondernemingen zijn echt actief, en waarop baseren we dat?</p>
+       <div className="splash-progress" aria-hidden><i /></div>
+       <small className="splash-status">{status}</small>
+@@ -200,7 +200,7 @@ export default function App() {
+       {splash}
+       <header className="topbar">
+         <div className="brand">
+-          <img className="duck-logo" src="/duckduckgov-logo.png" alt="" />
++          <img className="duck-logo" src="./duckduckgov-logo.png" alt="" />
+           <div>
+             <strong>DuckDuckGov</strong>
+             <small>Lokale economie · {MUNICIPALITY}</small>
+diff --git a/frontend/src/api/demo.ts b/frontend/src/api/demo.ts
+index 8c46162..874f323 100644
+--- a/frontend/src/api/demo.ts
++++ b/frontend/src/api/demo.ts
+@@ -4,16 +4,16 @@ import { addressLine, formatDate, formatRegistryNumber, latest } from "../lib/fo
+ import { isCoOwnership, type CleanRecord } from "./cleaning";
+ import { cleanSnapshot, snapshotMeta } from "./snapshot";
+ import { SECTOR_RULES, classifySectors } from "./sectors";
+-import { evidenceFromTool, runsFromTool, stampsFromTool, toolEnrich, type ToolFinding, type ToolResult } from "./tool";
++import { evidenceFromTool, stampsFromTool, type ToolFinding, type ToolResult } from "./tool";
+ import {
+   ApiError, type BusinessDetail, type BusinessQuery, type BusinessSummary, type ContactValue, type DataSource,
+   type EmailDraft, type EvidenceReason, type Facet, type Language, type Level, type Purpose, type RecordType,
+   type SectorMatch,
+ } from "./types";
+ 
+-const KBO_ENTERPRISE_URL = "https://kbopub.economie.fgov.be/kbopub/toonondernemingps.html?lang=nl&ondernemingsnummer=";
+-const KBO_ESTABLISHMENT_URL = "https://kbopub.economie.fgov.be/kbopub/toonvestigingps.html?lang=nl&vestigingsnummer=";
+-const DRAFTS_KEY = "duckduckgov-demo-drafts";
++const KBO_ENTERPRISE_URL = "#";
++const KBO_ESTABLISHMENT_URL = "#";
++const DRAFTS_KEY = "duckduckgov-synthetic-portfolio-drafts";
+ 
+ const normalize = (s: string) => s.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+ const isNormal = (status: string | null) => !!status && status.toLowerCase() === "normale toestand";
+@@ -417,25 +417,8 @@ export async function createDemoSource(): Promise<DataSource> {
+       return api.business(id);
+     },
+ 
+-    async enrich(id) {
+-      const r = recordOrThrow(id);
+-      const result = await toolEnrich({
+-        Ondernemingsnr: r.business_number,
+-        Ondernemingsnr_maatsch_zetel: r.parent_enterprise_number ?? "",
+-        Maatschappelijke_naam: r.legal_name ?? "",
+-        Commerciele_naam: r.commercial_name ?? "",
+-        KBO_Straat: r.kbo_street ?? "",
+-        KBO_Huisnr: r.kbo_house_number ?? "",
+-        KBO_Postcode: r.kbo_postcode ?? "",
+-        KBO_Gemeente: r.kbo_municipality ?? "",
+-        Telefoonnummer: r.phone ?? "",
+-        Email: r.email ?? "",
+-        latitude: r.out_of_area ? null : r.latitude,
+-        longitude: r.out_of_area ? null : r.longitude,
+-      });
+-      tools.set(id, result);
+-      details.delete(id);
+-      return { detail: await api.business(id), runs: runsFromTool(result), via: "local", summary: result.summary };
++    async enrich() {
++      throw new ApiError("External enrichment is disabled in this synthetic portfolio demo.", 501);
+     },
+ 
+     async runImport() {
+diff --git a/frontend/src/api/snapshot.ts b/frontend/src/api/snapshot.ts
+index 0dbf450..6f03cbf 100644
+--- a/frontend/src/api/snapshot.ts
++++ b/frontend/src/api/snapshot.ts
+@@ -1,28 +1,10 @@
+-// The supplied KBO snapshot (read-only, straight from backend/data/reference).
+-import rawUrl from "../../../backend/data/reference/schoten-kbo-1000-2026-09-07.geojson?url";
+-import metadata from "../../../backend/data/reference/source-metadata.json";
++// Portfolio-only synthetic dataset. No real companies or contact details.
+ import { cleanKbo } from "./cleaning";
+-
+ export const snapshotMeta = {
+-  name: metadata.dataset,
+-  publisher: metadata.publisher,
+-  retrievedOn: metadata.retrieved_on.slice(0, 10),
+-  note: "De exacte KBO-datum staat niet in de bron; de uitgever meldt 1 tot 3 dagen vertraging.",
+-  attribution: metadata.attribution,
+-  licenceUrl: metadata.licence_url,
+-  completeMunicipality: metadata.complete_municipality,
++ name: "SYNTHETIC PORTFOLIO DEMO · 12 invented records", publisher: "DKAA04",
++ retrievedOn: "2026-09-24", note: "Fictieve ondernemingen, adressen en signalen. Geen echte KBO-gegevens.",
++ attribution: "Synthetic demonstration data · not registry evidence", licenceUrl: "#", completeMunicipality: false,
+ };
+-
+-let rawPromise: Promise<unknown> | null = null;
+-
+-export function loadRawSnapshot(): Promise<unknown> {
+-  rawPromise ??= fetch(rawUrl).then((res) => {
+-    if (!res.ok) throw new Error(`KBO-bestand niet gevonden (${res.status})`);
+-    return res.json();
+-  });
+-  return rawPromise;
+-}
+-
+-export async function cleanSnapshot() {
+-  return cleanKbo(await loadRawSnapshot());
+-}
++const fixture = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0001", "Maatschappelijke_naam": "DEMO Atelier Noord", "KBO_Straat": "Demolaan", "KBO_Huisnr": "1", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Andere voorbeeldstraat", "AR_huisnr": "1", "Rechtstoestand": "Stopgezet", "Email": "", "NACE_hoofdact_BTW": "62010", "Omschrijving_hoofdact_BTW": "Software"}, "geometry": {"type": "Point", "coordinates": [4.49, 51.246]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0002", "Maatschappelijke_naam": "DEMO Bakkerij Linde", "KBO_Straat": "Voorbeeldstraat", "KBO_Huisnr": "2", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Voorbeeldstraat", "AR_huisnr": "2", "Rechtstoestand": "Normale toestand", "Email": "demo2@example.invalid", "NACE_hoofdact_BTW": "10710", "Omschrijving_hoofdact_BTW": "Bakkerij"}, "geometry": {"type": "Point", "coordinates": [4.494, 51.246]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0003", "Maatschappelijke_naam": "DEMO Byte Studio", "KBO_Straat": "Testplein", "KBO_Huisnr": "3", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Testplein", "AR_huisnr": "3", "Rechtstoestand": "Normale toestand", "Email": "", "NACE_hoofdact_BTW": "56101", "Omschrijving_hoofdact_BTW": "Restaurant"}, "geometry": {"type": "Point", "coordinates": [4.498, 51.246]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0004", "Maatschappelijke_naam": "DEMO Fiets & Co", "KBO_Straat": "Demolaan", "KBO_Huisnr": "4", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Demolaan", "AR_huisnr": "4", "Rechtstoestand": "Normale toestand", "Email": "demo4@example.invalid", "NACE_hoofdact_BTW": "43320", "Omschrijving_hoofdact_BTW": "Technische diensten"}, "geometry": {"type": "Point", "coordinates": [4.502, 51.246]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0005", "Maatschappelijke_naam": "DEMO Groenwerk", "KBO_Straat": "Voorbeeldstraat", "KBO_Huisnr": "5", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Andere voorbeeldstraat", "AR_huisnr": "5", "Rechtstoestand": "Normale toestand", "Email": "", "NACE_hoofdact_BTW": "62010", "Omschrijving_hoofdact_BTW": "Software"}, "geometry": {"type": "Point", "coordinates": [4.49, 51.25]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0006", "Maatschappelijke_naam": "DEMO Haven Koffie", "KBO_Straat": "Testplein", "KBO_Huisnr": "6", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Testplein", "AR_huisnr": "6", "Rechtstoestand": "Stopgezet", "Email": "demo6@example.invalid", "NACE_hoofdact_BTW": "10710", "Omschrijving_hoofdact_BTW": "Bakkerij"}, "geometry": {"type": "Point", "coordinates": [4.494, 51.25]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0007", "Maatschappelijke_naam": "DEMO Lotus Design", "KBO_Straat": "Demolaan", "KBO_Huisnr": "7", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Demolaan", "AR_huisnr": "7", "Rechtstoestand": "Normale toestand", "Email": "", "NACE_hoofdact_BTW": "56101", "Omschrijving_hoofdact_BTW": "Restaurant"}, "geometry": {"type": "Point", "coordinates": [4.498, 51.25]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0008", "Maatschappelijke_naam": "DEMO Mobiliteit", "KBO_Straat": "Voorbeeldstraat", "KBO_Huisnr": "8", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Voorbeeldstraat", "AR_huisnr": "8", "Rechtstoestand": "Normale toestand", "Email": "demo8@example.invalid", "NACE_hoofdact_BTW": "43320", "Omschrijving_hoofdact_BTW": "Technische diensten"}, "geometry": {"type": "Point", "coordinates": [4.502, 51.25]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0009", "Maatschappelijke_naam": "DEMO Nova Services", "KBO_Straat": "Testplein", "KBO_Huisnr": "9", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Andere voorbeeldstraat", "AR_huisnr": "9", "Rechtstoestand": "Normale toestand", "Email": "", "NACE_hoofdact_BTW": "62010", "Omschrijving_hoofdact_BTW": "Software"}, "geometry": {"type": "Point", "coordinates": [4.49, 51.254000000000005]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0010", "Maatschappelijke_naam": "DEMO Papierhuis", "KBO_Straat": "Demolaan", "KBO_Huisnr": "10", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Demolaan", "AR_huisnr": "10", "Rechtstoestand": "Normale toestand", "Email": "demo10@example.invalid", "NACE_hoofdact_BTW": "10710", "Omschrijving_hoofdact_BTW": "Bakkerij"}, "geometry": {"type": "Point", "coordinates": [4.494, 51.254000000000005]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0011", "Maatschappelijke_naam": "DEMO Rivier Techniek", "KBO_Straat": "Voorbeeldstraat", "KBO_Huisnr": "11", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Voorbeeldstraat", "AR_huisnr": "11", "Rechtstoestand": "Stopgezet", "Email": "", "NACE_hoofdact_BTW": "56101", "Omschrijving_hoofdact_BTW": "Restaurant"}, "geometry": {"type": "Point", "coordinates": [4.498, 51.254000000000005]}}, {"type": "Feature", "properties": {"Ondernemingsnr": "DEMO0012", "Maatschappelijke_naam": "DEMO Zon Energie", "KBO_Straat": "Testplein", "KBO_Huisnr": "12", "KBO_Postcode": "2900", "KBO_Gemeente": "Schoten", "AR_straat": "Testplein", "AR_huisnr": "12", "Rechtstoestand": "Normale toestand", "Email": "demo12@example.invalid", "NACE_hoofdact_BTW": "43320", "Omschrijving_hoofdact_BTW": "Technische diensten"}, "geometry": {"type": "Point", "coordinates": [4.502, 51.254000000000005]}}]};
++export async function loadRawSnapshot(): Promise<unknown> { return fixture; }
++export async function cleanSnapshot() { return cleanKbo(await loadRawSnapshot()); }
+diff --git a/frontend/src/components/MapView.tsx b/frontend/src/components/MapView.tsx
+index c72f3cd..bae3ed4 100644
+--- a/frontend/src/components/MapView.tsx
++++ b/frontend/src/components/MapView.tsx
+@@ -15,7 +15,7 @@ const SCHOTEN: [number, number] = [51.2505, 4.5007];
+ // localhost and the deployed domain in CARTO's key dashboard.
+ const CARTO_BASEMAP_KEY = import.meta.env.VITE_CARTO_BASEMAP_KEY?.trim();
+ const CARTO_DARK_URL = "https://{s}.basemaps.cartocdn.com/rastertiles/dark_all/{z}/{x}/{y}{r}.png";
+-const OSM_FALLBACK_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
++const OSM_FALLBACK_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+ 
+ function FitToPoints({ points, fitKey }: { points: MapPoint[]; fitKey: string }) {
+   const map = useMap();

@@ -1,48 +1,76 @@
-<div align="center">
+<p align="center"><img src="hero.png" alt="Angel Aparicio — Business Engineering / Security / Software" width="100%"></p>
 
-# Angel Aparicio Pastor
+<p align="center">
+  <a href="https://dkaa04.github.io/DKAA04/">Open interactive demos</a> ·
+  <a href="https://github.com/DKAA04?tab=repositories">Browse repositories</a>
+</p>
 
-### Software · Data · Automation
+## ~/ whoami
 
-Building practical tools for exploring data, automating workflows and applying machine learning.
+```text
+Angel Aparicio Pastor
+Business Engineering · KU Leuven · Business & Information Systems
+Expected graduation: 2027
 
-[Explore my projects](https://github.com/DKAA04?tab=repositories)
+Building:   data tools, AI-assisted workflows and practical automation
+Direction:  cybersecurity, backed by software and business understanding
+Learning:   penetration testing and adversary emulation
+```
 
-</div>
+I like turning messy information into tools people can inspect and use. My work spans municipal data exploration, invoice processing, vibration-signal classification and operational automation.
 
----
+**2nd place · Code the Sky Hackathon (2026).** PNPT and CRTO preparation is in progress; these are not completed certifications.
 
-## Selected work
+## ~/ selected-work
 
-### [DuckDuckGov](https://github.com/DKAA04/Hackathon-16-9)
-**Making business-register data easier to inspect.** A searchable map and review interface combining KBO/VKBO records, enrichment evidence and manual corrections. React and TypeScript frontend; Python, FastAPI and SQLite backend.
+### 01 · [DuckDuckGov](https://github.com/DKAA04/Hackathon-16-9)
 
-→ [Architecture, local setup and prototype boundaries](https://github.com/DKAA04/Hackathon-16-9#readme)
+A map-based interface for investigating business-register records, with search, filters, source evidence and manual review. **React · TypeScript · FastAPI · SQLite**
 
-### [InvoiceAgent](https://github.com/DKAA04/Stripe_hackathon_Einvoicing)
-**From invoice descriptions to structured bookkeeping.** A conversational prototype with PDF extraction, optional AI interpretation, deterministic monetary calculations, account allocation and double-entry journals.
+<a href="https://dkaa04.github.io/DKAA04/duck.html"><img src="duck-preview.png" alt="DuckDuckGov synthetic demo: search, map and an evidence panel" width="100%"></a>
 
-→ [Processing flow, tests and integration limits](https://github.com/DKAA04/Stripe_hackathon_Einvoicing#readme)
+[Try the synthetic demo →](https://dkaa04.github.io/DKAA04/duck.html) · [Architecture & setup](https://github.com/DKAA04/Hackathon-16-9#readme)
 
-### [Code the Sky](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO)
-**Exploring structural faults through vibration signals.** FFT-based features, scikit-learn classifiers, a BigQuery ML path and a Streamlit inspection interface. Evaluation compares split strategies to examine generalization across sensor boards.
+The public demo runs the existing interface with invented records. External enrichment, email sending and calls are disabled. The full repository documents the registry-data prototype and optional integrations.
 
-→ [Methodology and reproducibility](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO#readme)
+### 02 · [InvoiceAgent](https://github.com/DKAA04/Stripe_hackathon_Einvoicing)
 
-### [Email & Product Lookup Automation](https://github.com/DKAA04/internship-email-system)
-**Small tools for operational workflows.** Python modules for parameterized MySQL lookup and AWS SES email delivery, with attachment handling, retries and a mocked delivery test.
+From short invoice descriptions to account allocations, VAT calculations and double-entry journals. Optional AI handles interpretation; Python handles the monetary logic. **Python · FastAPI · PyMuPDF · optional Gemini**
 
-→ [Implementation and setup](https://github.com/DKAA04/internship-email-system#readme)
+<a href="https://dkaa04.github.io/DKAA04/invoice.html"><img src="invoice-preview.png" alt="InvoiceAgent recorded demo showing a balanced sales-invoice journal" width="100%"></a>
 
-## Technologies in these repositories
+[Explore the recorded demo →](https://dkaa04.github.io/DKAA04/invoice.html) · [Implementation & tests](https://github.com/DKAA04/Stripe_hackathon_Einvoicing#readme)
 
-| Area | Tools used |
-| --- | --- |
-| Backend & automation | Python, FastAPI, SQLAlchemy, MySQL, AWS SES |
-| Data & machine learning | pandas, NumPy, SciPy, scikit-learn, BigQuery ML |
-| Interfaces | React, TypeScript, Vite, Streamlit |
-| Mobile experiments | Flutter, Dart, Riverpod, Hive |
+Four synthetic examples captured from the real Python backend. This is an interactive replay, with no live AI, uploads or invoice transmission. The application remains a hackathon prototype.
 
-## About this portfolio
+### 03 · [Code the Sky](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO)
 
-I’m consolidating projects from my development environments and documenting what each one does, how to run it and where its limitations are. The featured repositories include hackathon and learning prototypes; their READMEs distinguish implemented behavior from work that still needs validation.
+**2nd-place hackathon project.** Exploring bolt-condition classification through vibration signals, FFT features and different train/test split strategies. **Python · SciPy · scikit-learn · Streamlit · BigQuery ML**
+
+[Explore the signal pipeline →](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO#readme)
+
+The README distinguishes historical results from reproducible evidence. The raw dataset and trained model are not distributed in the public repository.
+
+### 04 · [Email & Product Lookup Automation](https://github.com/DKAA04/internship-email-system)
+
+Focused Python modules for parameterized database lookup and AWS SES delivery, including attachments, retries and a mocked delivery test. **Python · MySQL · AWS SES**
+
+[Read the implementation →](https://github.com/DKAA04/internship-email-system#readme)
+
+## ~/ toolbox
+
+Tools used in the public projects, rather than proficiency ratings:
+
+| Build | Work with data | Interface |
+| --- | --- | --- |
+| Python · FastAPI · Git | SQL · pandas · NumPy · SciPy | TypeScript · React · Vite |
+| SQLAlchemy · MySQL · AWS SES | scikit-learn · BigQuery ML | Streamlit · Flutter · Dart |
+
+## ~/ public-activity
+
+<img src="languages.svg" alt="Public project language distribution by GitHub code bytes; not a proficiency score" width="100%">
+<img src="activity.svg" alt="Actual public GitHub contribution levels with a decorative animated scan line" width="100%">
+
+Graphics use public GitHub data and display their refresh date. [How the visuals and demos are produced](SOURCE_NOTES.md).
+
+<sub>I’m consolidating and documenting projects from my development environments. These repositories include hackathon and learning prototypes; each README explains what works, how to run it and what still needs validation.</sub>

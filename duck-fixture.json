@@ -1,0 +1,293 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0001",
+        "Maatschappelijke_naam": "DEMO Atelier Noord",
+        "KBO_Straat": "Demolaan",
+        "KBO_Huisnr": "1",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Andere voorbeeldstraat",
+        "AR_huisnr": "1",
+        "Rechtstoestand": "Stopgezet",
+        "Email": "",
+        "NACE_hoofdact_BTW": "62010",
+        "Omschrijving_hoofdact_BTW": "Software"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.49,
+          51.246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0002",
+        "Maatschappelijke_naam": "DEMO Bakkerij Linde",
+        "KBO_Straat": "Voorbeeldstraat",
+        "KBO_Huisnr": "2",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Voorbeeldstraat",
+        "AR_huisnr": "2",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "demo2@example.invalid",
+        "NACE_hoofdact_BTW": "10710",
+        "Omschrijving_hoofdact_BTW": "Bakkerij"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.494,
+          51.246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0003",
+        "Maatschappelijke_naam": "DEMO Byte Studio",
+        "KBO_Straat": "Testplein",
+        "KBO_Huisnr": "3",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Testplein",
+        "AR_huisnr": "3",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "",
+        "NACE_hoofdact_BTW": "56101",
+        "Omschrijving_hoofdact_BTW": "Restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.498,
+          51.246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0004",
+        "Maatschappelijke_naam": "DEMO Fiets & Co",
+        "KBO_Straat": "Demolaan",
+        "KBO_Huisnr": "4",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Demolaan",
+        "AR_huisnr": "4",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "demo4@example.invalid",
+        "NACE_hoofdact_BTW": "43320",
+        "Omschrijving_hoofdact_BTW": "Technische diensten"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.502,
+          51.246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0005",
+        "Maatschappelijke_naam": "DEMO Groenwerk",
+        "KBO_Straat": "Voorbeeldstraat",
+        "KBO_Huisnr": "5",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Andere voorbeeldstraat",
+        "AR_huisnr": "5",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "",
+        "NACE_hoofdact_BTW": "62010",
+        "Omschrijving_hoofdact_BTW": "Software"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.49,
+          51.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0006",
+        "Maatschappelijke_naam": "DEMO Haven Koffie",
+        "KBO_Straat": "Testplein",
+        "KBO_Huisnr": "6",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Testplein",
+        "AR_huisnr": "6",
+        "Rechtstoestand": "Stopgezet",
+        "Email": "demo6@example.invalid",
+        "NACE_hoofdact_BTW": "10710",
+        "Omschrijving_hoofdact_BTW": "Bakkerij"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.494,
+          51.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0007",
+        "Maatschappelijke_naam": "DEMO Lotus Design",
+        "KBO_Straat": "Demolaan",
+        "KBO_Huisnr": "7",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Demolaan",
+        "AR_huisnr": "7",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "",
+        "NACE_hoofdact_BTW": "56101",
+        "Omschrijving_hoofdact_BTW": "Restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.498,
+          51.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0008",
+        "Maatschappelijke_naam": "DEMO Mobiliteit",
+        "KBO_Straat": "Voorbeeldstraat",
+        "KBO_Huisnr": "8",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Voorbeeldstraat",
+        "AR_huisnr": "8",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "demo8@example.invalid",
+        "NACE_hoofdact_BTW": "43320",
+        "Omschrijving_hoofdact_BTW": "Technische diensten"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.502,
+          51.25
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0009",
+        "Maatschappelijke_naam": "DEMO Nova Services",
+        "KBO_Straat": "Testplein",
+        "KBO_Huisnr": "9",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Andere voorbeeldstraat",
+        "AR_huisnr": "9",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "",
+        "NACE_hoofdact_BTW": "62010",
+        "Omschrijving_hoofdact_BTW": "Software"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.49,
+          51.254000000000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0010",
+        "Maatschappelijke_naam": "DEMO Papierhuis",
+        "KBO_Straat": "Demolaan",
+        "KBO_Huisnr": "10",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Demolaan",
+        "AR_huisnr": "10",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "demo10@example.invalid",
+        "NACE_hoofdact_BTW": "10710",
+        "Omschrijving_hoofdact_BTW": "Bakkerij"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.494,
+          51.254000000000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0011",
+        "Maatschappelijke_naam": "DEMO Rivier Techniek",
+        "KBO_Straat": "Voorbeeldstraat",
+        "KBO_Huisnr": "11",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Voorbeeldstraat",
+        "AR_huisnr": "11",
+        "Rechtstoestand": "Stopgezet",
+        "Email": "",
+        "NACE_hoofdact_BTW": "56101",
+        "Omschrijving_hoofdact_BTW": "Restaurant"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.498,
+          51.254000000000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Ondernemingsnr": "DEMO0012",
+        "Maatschappelijke_naam": "DEMO Zon Energie",
+        "KBO_Straat": "Testplein",
+        "KBO_Huisnr": "12",
+        "KBO_Postcode": "2900",
+        "KBO_Gemeente": "Schoten",
+        "AR_straat": "Testplein",
+        "AR_huisnr": "12",
+        "Rechtstoestand": "Normale toestand",
+        "Email": "demo12@example.invalid",
+        "NACE_hoofdact_BTW": "43320",
+        "Omschrijving_hoofdact_BTW": "Technische diensten"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          4.502,
+          51.254000000000005
+        ]
+      }
+    }
+  ]
+}
