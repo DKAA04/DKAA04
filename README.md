@@ -19,11 +19,19 @@ Learning:   penetration testing and adversary emulation
 
 I like turning messy information into tools people can inspect and use. My work spans municipal data exploration, invoice processing, vibration-signal classification and operational automation.
 
-**2nd place · Code the Sky Hackathon (2026).** PNPT and CRTO preparation is in progress; these are not completed certifications.
+**2nd place · Solo entry · Code the Sky Hackathon (2026).** PNPT and CRTO preparation is in progress; these are not completed certifications.
 
 ## ~/ selected-work
 
-### 01 · [DuckDuckGov](https://github.com/DKAA04/Hackathon-16-9)
+### 01 · [Code the Sky](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO)
+
+**2nd place as a solo entrant against teams.** I built the original signal analysis, models, Streamlit interface, BigQuery path and presentation. The project explores bolt-condition classification through vibration signals, FFT features and different train/test split strategies. **Python · SciPy · scikit-learn · Streamlit · BigQuery ML**
+
+[Explore the signal pipeline →](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO#readme)
+
+**82.62% accuracy on held-out sensor boards** in a fresh, fixed-seed evaluation of 8,221 laboratory captures. The public repository includes the reviewed feature table, example signals, exact splits and [evaluation report](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO/blob/main/reports/evaluation.md). This is a research prototype, not an operational aviation inspection system.
+
+### 02 · [DuckDuckGov](https://github.com/DKAA04/Hackathon-16-9)
 
 A map-based interface for investigating business-register records, with search, filters, source evidence and manual review. **React · TypeScript · FastAPI · SQLite**
 
@@ -33,7 +41,7 @@ A map-based interface for investigating business-register records, with search, 
 
 The public demo runs the existing interface with invented records. External enrichment, email sending and calls are disabled. The full repository documents the registry-data prototype and optional integrations.
 
-### 02 · [InvoiceAgent](https://github.com/DKAA04/Stripe_hackathon_Einvoicing)
+### 03 · [InvoiceAgent](https://github.com/DKAA04/Stripe_hackathon_Einvoicing)
 
 From short invoice descriptions to account allocations, VAT calculations and double-entry journals. Optional AI handles interpretation; Python handles the monetary logic. **Python · FastAPI · PyMuPDF · optional Gemini**
 
@@ -43,19 +51,15 @@ From short invoice descriptions to account allocations, VAT calculations and dou
 
 Four synthetic examples captured from the real Python backend. This is an interactive replay, with no live AI, uploads or invoice transmission. The application remains a hackathon prototype.
 
-### 03 · [Code the Sky](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO)
-
-**2nd-place hackathon project.** Exploring bolt-condition classification through vibration signals, FFT features and different train/test split strategies. **Python · SciPy · scikit-learn · Streamlit · BigQuery ML**
-
-[Explore the signal pipeline →](https://github.com/DKAA04/CODE-THE-SKY_CLEAN-REPO#readme)
-
-The README distinguishes historical results from reproducible evidence. The raw dataset and trained model are not distributed in the public repository.
-
 ### 04 · [Email & Product Lookup Automation](https://github.com/DKAA04/internship-email-system)
 
 Focused Python modules for parameterized database lookup and AWS SES delivery, including attachments, retries and a mocked delivery test. **Python · MySQL · AWS SES**
 
 [Read the implementation →](https://github.com/DKAA04/internship-email-system#readme)
+
+## ~/ building-now
+
+[**Steel**](https://github.com/DKAA04/Steel) is an early local-assistant foundation: an offline Python CLI with opt-in SQLite memory, expiry and explicit deletion controls. Voice, vision, mobile and security-tool integrations are planned. The September 2026 foundation was implemented with Codex assistance and is documented separately from those future modules.
 
 ## ~/ toolbox
 
