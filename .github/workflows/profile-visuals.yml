@@ -1,0 +1,23 @@
+name: Refresh public portfolio visuals
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 6 * * 1'
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Read public data and render SVGs
+        run: python3 update_visuals.py
+      - name: Commit refreshed facts
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add activity.svg languages.svg
+          if ! git diff --cached --quiet; then
+            git commit -m 'Refresh public portfolio visuals'
+            git push
+          fi
